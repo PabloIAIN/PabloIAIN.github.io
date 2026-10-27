@@ -21,7 +21,7 @@
 (function(){
   var grid=document.getElementById('repo-grid'); if(!grid)return;
   var USER='PabloIAIN';
-  var HIDE=['no-nativo','pabloiain-','pabloiain.github.io'];
+  var HIDE=['no-nativo','pabloiain-','pabloiain.github.io','enarm360'];
   var COLORS={Java:'#b07219',TypeScript:'#3178c6',Python:'#3572A5',Dart:'#00B4AB',JavaScript:'#e0c341',PHP:'#4F5D95',HTML:'#e34c26','Jupyter Notebook':'#DA5B0B',Prolog:'#a8506a',SQL:'#b8901c'};
   var INFO={
     'campops':{d:'Dashboard de operaciones bilingüe para Camp Yavapines, sincronizado por código de equipo. Adoptado por el staff.',c:'campops'},
@@ -39,11 +39,12 @@
     'smartstock-hackathon':{d:'Control de inventario y validación de pedidos con la "Regla de Oro". Hackathon.'}
   };
   var PRIVATE=[{name:'lakehouse-sunplus',lang:'SQL',updated:'2026-10-20',d:'Lakehouse empresarial con Dremio, Iceberg, Nessie y MinIO. Código propiedad de la empresa.',href:'proyectos.html#lakehouse',priv:true},
+               {name:'enarm360',lang:'Java',updated:'2026-10-01',d:'SaaS de simulación del examen ENARM en producción. Co-fundador y desarrollador backend: API REST, autenticación, roles y despliegue.',href:'proyectos.html#enarm360',priv:true,caso:'enarm360',tag:'Co-fundador'},
                {name:'jupyterhub-lakehouse',lang:'Python',updated:'2026-10-09',d:'Espacio de análisis multiusuario con JupyterHub y Docker, conectado al lakehouse por Arrow Flight.',href:'proyectos.html#lakehouse',priv:true}];
   // respaldo si la API de GitHub no responde
   var FALLBACK=[
     ['campops','TypeScript','2026-06-24'],['instrumento-ocr-tickets-mx','Jupyter Notebook','2026-04-24'],['gmu_doulos','Dart','2026-04-22','https://gmu-doulos.vercel.app'],
-    ['taskflow','Java','2026-04-11'],['Enarm360','TypeScript','2025-10-14',null,true],['sistemas-de-contactos-react-y-node.js','JavaScript','2026-04-10'],
+    ['taskflow','Java','2026-04-11'],['sistemas-de-contactos-react-y-node.js','JavaScript','2026-04-10'],
     ['agenda-contactos-fastapi','Python','2026-04-10'],['agenda-contactos-springboot','Java','2026-04-10'],['examenes-sistema-cakephp','PHP','2026-04-10'],
     ['pseudoc_parser','Python','2026-03-12'],['Cuaderno-de-Ejercicios','Prolog','2026-02-24'],['smartstock-hackathonv2','HTML','2025-12-03'],['smartstock-hackathon','HTML','2025-12-02']
   ].map(function(r){return {name:r[0],language:r[1],pushed_at:r[2],homepage:r[3]||'',fork:!!r[4],html_url:'https://github.com/'+USER+'/'+r[0],description:''}});
@@ -58,7 +59,7 @@
       return {name:r.name,lang:r.language||'Otro',updated:r.pushed_at||r.updated_at,d:i.d||r.description||'Repositorio de práctica.',
         href:r.html_url,demo:r.homepage||'',tag:i.tag||(r.fork?'Fork':''),caso:i.c||''};
     });
-    return PRIVATE.map(function(p){return {name:p.name,lang:p.lang,updated:p.updated,d:p.d,href:p.href,priv:true,caso:'lakehouse'}}).concat(out);
+    return PRIVATE.map(function(p){return {name:p.name,lang:p.lang,updated:p.updated,d:p.d,href:p.href,priv:true,caso:p.caso||'lakehouse'}}).concat(out);
   }
   function card(r){
     var pill=r.priv?'<span class="pill lock">Privado</span>':r.demo?'<span class="pill demo">Demo</span>':r.tag?'<span class="pill">'+esc(r.tag)+'</span>':'';
