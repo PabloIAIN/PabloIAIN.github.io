@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Proyectos · Pablo Garza</title>
+<meta name="description" content="Todos los proyectos de Pablo Garza: casos documentados de ingeniería de datos y backend, y sus repositorios de GitHub.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<nav class="top" aria-label="Principal">
+  <div class="progress" aria-hidden="true"></div>
+  <div class="wrap">
+    <a class="brand" href="index.html">Pablo<span>.</span>Garza</a>
+    <ul>
+      <li class="opt"><a href="index.html">Inicio</a></li>
+      <li><a href="proyectos.html" aria-current="page">Proyectos</a></li>
+      <li class="opt"><a href="index.html#experiencia">Experiencia</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="wrap">
+  <header class="page-head" id="top">
+    <p class="eyebrow">Proyectos</p>
+    <h1>Lo que he construido</h1>
+    <p>Casos documentados de ingeniería de datos, backend y full stack, y todos mis repositorios públicos de GitHub.</p>
+    <div class="stats">
+      <div><b>4</b><span>Casos documentados</span></div>
+      <div><b id="stat-repos">13</b><span>Repos públicos</span></div>
+      <div><b id="stat-langs">9</b><span>Lenguajes</span></div>
+    </div>
+    <div class="subnav"><a class="btn" href="#casos">Casos documentados</a><a class="btn" href="#repos">Todos los repositorios</a></div>
+  </header>
+
+  <section id="casos">
+    <div class="sec-head"><p class="eyebrow">Casos documentados</p><h2>Proyectos destacados a detalle</h2>
+      <p>Cada proyecto incluye mi rol, el problema, el stack, evidencia técnica y resultados.</p></div>
+
+    <!-- PROYECTO 1: LAKEHOUSE -->
+    <article class="case" id="lakehouse">
+      <div class="case-head">
+        <h3>Lakehouse empresarial<span class="badge">Prácticas</span></h3>
+        <span class="meta">SunPlus · ago–dic 2026</span>
+      </div>
+      <dl class="fields">
+        <dt>Rol</dt><dd>Practicante de Data Engineering en el área de Data Lake &amp; BI. Diseñé y configuré el flujo de datos de punta a punta.</dd>
+        <dt>Contexto</dt><dd>La información de la empresa vivía en varias bases operativas (SQL Server y PostgreSQL). Cada reporte requería consultas manuales a cada fuente y no existía un lugar único, gobernado y versionado para analizar los datos.</dd>
+        <dt>Stack</dt><dd><ul class="tags"><li>Dremio</li><li>Apache Iceberg</li><li>Project Nessie</li><li>MinIO (S3)</li><li>Metabase</li><li>SQL Server</li><li>PostgreSQL</li><li>Docker</li><li>JupyterHub</li><li>Arrow Flight</li></ul></dd>
+        <dt>Resultados</dt><dd><ul class="res">
+          <li>9 bases de datos operativas federadas en una sola capa de consulta, sobre un catálogo Nessie con control de versiones por ramas.</li>
+          <li>Datos organizados en capas bronze, silver y gold, que alimentan los tableros de Metabase del área.</li>
+          <li>Automatización del refresh de tablas en Dremio, que mantiene los tableros al día sin intervención manual.</li>
+          <li>Instalación de JupyterHub en Debian con Docker para que el equipo analice y valide datos desde el navegador.</li>
+          <li>Diagnóstico de conectividad entre servidores y bases en la nube, con la solicitud documentada al equipo de infraestructura.</li>
+        </ul></dd>
+      </dl>
+
+      <div class="layers" aria-label="Capas del lakehouse">
+        <span><i style="background:var(--bronze)"></i>bronze · datos crudos</span>
+        <span><i style="background:var(--silver)"></i>silver · limpios y tipados</span>
+        <span><i style="background:var(--gold)"></i>gold · listos para negocio</span>
+      </div>
+
+      <div class="diagram" role="img" aria-label="Diagrama de arquitectura: SQL Server y PostgreSQL alimentan a Dremio, que escribe tablas Iceberg en MinIO catalogadas con Nessie en capas bronze, silver y gold; Metabase y JupyterHub consumen los datos.">
+        <svg viewBox="0 0 860 300" xmlns="http://www.w3.org/2000/svg">
+          <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="ahead" d="M0,0 L10,5 L0,10 z"/></marker></defs>
+          <text class="sm" x="20" y="22">FUENTES</text>
+          <rect class="box" x="20" y="40" width="150" height="56" rx="8"/><text x="38" y="64">SQL Server</text><text class="sm" x="38" y="82">ERP operativo</text>
+          <rect class="box" x="20" y="116" width="150" height="56" rx="8"/><text x="38" y="140">PostgreSQL</text><text class="sm" x="38" y="158">on-prem y nube</text>
+          <path class="arr" d="M170,68 C210,68 210,120 246,120"/>
+          <path class="arr" d="M170,144 C200,144 210,132 246,132"/>
+          <text class="sm" x="250" y="22">MOTOR</text>
+          <rect class="core" x="250" y="72" width="170" height="104" rx="8"/>
+          <text x="268" y="100" style="font-weight:600">Dremio</text>
+          <text class="sm" x="268" y="120">federación SQL</text>
+          <text class="sm" x="268" y="138">refresh automatizado</text>
+          <text class="sm" x="268" y="156">reflections</text>
+          <path class="arr" d="M420,124 L486,124"/>
+          <text class="sm" x="490" y="22">ALMACENAMIENTO</text>
+          <rect class="box" x="490" y="40" width="190" height="168" rx="8"/>
+          <text x="508" y="64">Iceberg en MinIO</text><text class="sm" x="508" y="82">catálogo Nessie (ramas)</text>
+          <rect class="b" x="508" y="96" width="154" height="28" rx="5"/><text class="lbl-inv" x="520" y="114">bronze</text>
+          <rect class="s" x="508" y="130" width="154" height="28" rx="5"/><text class="lbl-inv" x="520" y="148">silver</text>
+          <rect class="g" x="508" y="164" width="154" height="28" rx="5"/><text class="lbl-inv" x="520" y="182">gold</text>
+          <path class="arr" d="M680,100 C720,100 720,68 746,68"/>
+          <path class="arr" d="M680,160 C720,160 720,170 746,170"/>
+          <text class="sm" x="750" y="22">CONSUMO</text>
+          <rect class="box" x="750" y="40" width="96" height="56" rx="8"/><text x="764" y="64">Metabase</text><text class="sm" x="764" y="82">tableros</text>
+          <rect class="box" x="750" y="142" width="96" height="56" rx="8"/><text x="764" y="166">JupyterHub</text><text class="sm" x="764" y="184">análisis</text>
+          <text class="sm" x="20" y="262">Diagrama simplificado. Nombres de servidores, direcciones y esquemas internos omitidos por confidencialidad.</text>
+        </svg>
+      </div>
+
+      <div class="evidence">
+        <figure>
+          <pre class="code"><span class="c"># Consulta al lakehouse vía Arrow Flight (anonimizado)</span>
+<span class="k">from</span> pyarrow <span class="k">import</span> flight
+
+client = flight.FlightClient(<span class="s">"grpc://&lt;dremio-host&gt;:32010"</span>)
+token = client.authenticate_basic_token(user, pwd)
+opts = flight.FlightCallOptions(headers=[token])
+
+sql = <span class="s">"""
+SELECT fecha, SUM(importe) AS total
+FROM lakehouse.gold.ventas_diarias
+GROUP BY fecha ORDER BY fecha DESC
+"""</span>
+info = client.get_flight_info(
+    flight.FlightDescriptor.for_command(sql), opts)
+df = client.do_get(info.endpoints[0].ticket, opts).read_pandas()</pre>
+          <figcaption>Fragmento representativo del acceso desde notebooks. Credenciales, host y tablas reales sustituidos.</figcaption>
+        </figure>
+        <figure>
+          <pre class="code"><span class="c"># jupyterhub_config.py (extracto)</span>
+c.JupyterHub.authenticator_class = <span class="s">"native"</span>
+c.JupyterHub.spawner_class = <span class="s">"dockerspawner.DockerSpawner"</span>
+
+<span class="c"># un contenedor aislado por usuario</span>
+c.DockerSpawner.image = <span class="s">"lakehouse-notebook:latest"</span>
+c.DockerSpawner.network_name = <span class="s">"&lt;red-interna&gt;"</span>
+c.DockerSpawner.mem_limit = <span class="s">"4G"</span>
+c.DockerSpawner.remove = <span class="k">True</span>
+
+<span class="c"># apaga servidores inactivos para ahorrar RAM</span>
+c.JupyterHub.services = [{
+  <span class="s">"name"</span>: <span class="s">"idle-culler"</span>,
+  <span class="s">"command"</span>: [<span class="s">"python3"</span>, <span class="s">"-m"</span>,
+    <span class="s">"jupyterhub_idle_culler"</span>, <span class="s">"--timeout=3600"</span>]}]</pre>
+          <figcaption>Configuración del espacio de análisis: autenticación con aprobación de admin y límites de recursos por usuario.</figcaption>
+        </figure>
+      </div>
+      <div class="evidence">
+        <figure><div class="ph wide shot"><img src="img/lakehouse-1.jpg" alt="Dremio mostrando el catálogo Nessie en la rama main y 9 bases de datos conectadas, con nombres difuminados" loading="lazy"><div class="empty-msg">img/lakehouse-1.jpg</div></div><figcaption>Dremio: catálogo Nessie en la rama <code>main</code> y 9 fuentes federadas. Nombres ocultos.</figcaption></figure>
+        <figure><div class="ph wide shot"><img src="img/lakehouse-2.jpg" alt="Colección de Metabase con 10 preguntas y tableros construidos sobre el lakehouse" loading="lazy"><div class="empty-msg">img/lakehouse-2.jpg</div></div><figcaption>Metabase: colección de preguntas y tableros que consultan el lakehouse.</figcaption></figure>
+      </div>
+      <p class="note">El código del lakehouse es propiedad de la empresa. Aquí muestro la arquitectura y fragmentos representativos sin datos, credenciales ni nombres internos.</p>
+    </article>
+
+    <!-- PROYECTO 2: ENARM360 -->
+    <article class="case" id="enarm360">
+      <div class="case-head">
+        <h3>ENARM360<span class="badge">Co-fundador</span><span class="badge">En producción</span></h3>
+        <span class="meta">SaaS · 2025–2026</span>
+      </div>
+      <dl class="fields">
+        <dt>Rol</dt><dd><strong>Co-fundador y desarrollador backend.</strong> Diseñé la API REST, la autenticación, los roles y el modelo de datos, y administro el despliegue.</dd>
+        <dt>Contexto</dt><dd>Los médicos que presentan el ENARM (Examen Nacional de Aspirantes a Residencias Médicas) necesitan practicar en condiciones parecidas al examen real y medir su avance por especialidad.</dd>
+        <dt>Stack</dt><dd><ul class="tags"><li>Java</li><li>Spring Boot</li><li>React</li><li>TypeScript</li><li>PostgreSQL</li><li>Docker</li><li>Linux VPS</li><li>SSL</li></ul></dd>
+        <dt>Resultados</dt><dd><ul class="res">
+          <li>Plataforma en producción con usuarios que pagan suscripción.</li>
+          <li>Banco de más de 15,000 reactivos en más de 27 especialidades, con exámenes configurables por tema, número de reactivos, casos clínicos y dificultad.</li>
+          <li>Despliegue en VPS con Docker, certificados SSL y respaldos de base de datos.</li>
+          <li>Control de acceso por roles para estudiantes y administradores de contenido.</li>
+        </ul></dd>
+      </dl>
+      <div class="evidence">
+        <figure><div class="ph wide shot"><img src="img/enarm-1.jpg" alt="Página principal de ENARM360" loading="lazy"><div class="empty-msg">img/enarm-1.jpg</div></div><figcaption>Página principal de la plataforma.</figcaption></figure>
+        <figure><div class="ph wide shot"><img src="img/enarm-2.jpg" alt="Pantalla Arma tu Examen de ENARM360 con especialidades y configuración" loading="lazy"><div class="empty-msg">img/enarm-2.jpg</div></div><figcaption>"Arma tu examen": el usuario elige especialidades y la API arma el examen desde el banco de reactivos.</figcaption></figure>
+      </div>
+      <div class="links"><a class="btn" href="https://github.com/PabloIAIN/Enarm360" target="_blank" rel="noopener">Repositorio</a></div>
+    </article>
+
+    <!-- PROYECTO 3: CAMP OPS -->
+    <article class="case" id="campops">
+      <div class="case-head">
+        <h3>Camp Ops<span class="badge">Adoptado</span></h3>
+        <span class="meta">Camp Yavapines, Prescott AZ · verano 2026</span>
+      </div>
+      <dl class="fields">
+        <dt>Rol</dt><dd>Assistant Activities Director y desarrollador único del sistema, desde el diseño hasta la puesta en uso.</dd>
+        <dt>Contexto</dt><dd>El equipo del campamento coordinaba actividades, horarios y personal con papel y mensajes sueltos. Cualquier cambio de último minuto tardaba en llegar a todos.</dd>
+        <dt>Stack</dt><dd><ul class="tags"><li>TypeScript</li><li>React</li><li>Sincronización por código de equipo</li><li>Bilingüe ES / EN</li></ul></dd>
+        <dt>Resultados</dt><dd><ul class="res">
+          <li>Dashboard de operaciones adoptado por el staff del campamento durante la temporada.</li>
+          <li>Checklist de apertura diaria para 20 áreas de actividad, con módulos de tareas, cronograma, capacitación, inventario y registro.</li>
+          <li>Sincronización entre dispositivos con un código de equipo, sin cuentas individuales.</li>
+          <li>Interfaz bilingüe para un staff internacional.</li>
+        </ul></dd>
+      </dl>
+      <div class="evidence">
+        <figure><div class="ph wide shot"><img src="img/campops-1.jpg" alt="Dashboard de Camp Ops con la actividad actual y el estado de apertura de 20 áreas" loading="lazy"><div class="empty-msg">img/campops-1.jpg</div></div><figcaption>Inicio: actividad en curso, la siguiente y el estado de apertura de cada área.</figcaption></figure>
+        <figure><div class="ph wide shot"><img src="img/campops-2.jpg" alt="Cronograma del día en Camp Ops con la actividad actual resaltada" loading="lazy"><div class="empty-msg">img/campops-2.jpg</div></div><figcaption>Cronograma del día con la actividad actual resaltada.</figcaption></figure>
+      </div>
+      <div class="links"><a class="btn" href="https://github.com/PabloIAIN/campops" target="_blank" rel="noopener">Repositorio</a></div>
+    </article>
+
+    <!-- PROYECTO 4: OCR -->
+    <article class="case" id="ocr">
+      <div class="case-head">
+        <h3>Smart Receipt OCR<span class="badge">ExpoFITEC 2026</span></h3>
+        <span class="meta">Investigación · 2026</span>
+      </div>
+      <dl class="fields">
+        <dt>Rol</dt><dd>Autor del instrumento de evaluación y del análisis estadístico.</dd>
+        <dt>Contexto</dt><dd>Para digitalizar tickets de compra mexicanos había que elegir un motor de OCR, pero no existía una comparación rigurosa sobre este tipo de documento (papel térmico, formatos variados, español).</dd>
+        <dt>Stack</dt><dd><ul class="tags"><li>Python</li><li>Jupyter</li><li>Tesseract</li><li>EasyOCR</li><li>Donut</li><li>Friedman · Nemenyi</li><li>Cliff's delta</li><li>Bootstrap BCa</li></ul></dd>
+        <dt>Resultados</dt><dd><ul class="res">
+          <li>Comparación estadística de tres motores de OCR con pruebas no paramétricas y tamaño de efecto.</li>
+          <li>Intervalos de confianza por bootstrap BCa para reportar diferencias con rigor.</li>
+          <li>Presentado en ExpoFITEC 2026; código abierto bajo licencia MIT.</li>
+          <!-- EDITA: agrega el motor ganador y su métrica (p. ej. CER o exactitud de campos) -->
+        </ul></dd>
+      </dl>
+            <div class="links"><a class="btn" href="https://github.com/PabloIAIN/instrumento-ocr-tickets-mx" target="_blank" rel="noopener">Repositorio</a></div>
+    </article>
+  </section>
+
+  <!-- ============ TODOS LOS REPOS ============ -->
+  <section id="repos">
+    <div class="sec-head"><p class="eyebrow">GitHub</p><h2>Todos mis proyectos</h2>
+      <p>Repositorios públicos y proyectos privados de empresa. Filtra por lenguaje o busca por nombre.</p></div>
+    <div class="toolbar">
+      <div class="chips" id="repo-chips" role="group" aria-label="Filtrar por lenguaje"></div>
+      <div class="tools-right">
+        <input id="repo-q" type="search" placeholder="Buscar proyecto…" aria-label="Buscar proyecto">
+        <select id="repo-sort" aria-label="Ordenar"><option value="recent">Más recientes</option><option value="name">Nombre (A–Z)</option></select>
+      </div>
+    </div>
+    <div class="repos" id="repo-grid"></div>
+    <p class="repo-status"><span id="repo-count"></span> · <span id="repo-src"></span> · <a href="https://github.com/PabloIAIN?tab=repositories" target="_blank" rel="noopener">Ver perfil en GitHub</a></p>
+  </section>
+</main>
+
+<footer class="wrap">© 2026 Pablo Iaín Garza García · Montemorelos, N.L.</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
